@@ -1,0 +1,169 @@
+mql5
+// Program: Perfect Smart Scalper
+// Developer: Forex Robot Easy Team
+// Website: forexroboteasy.com
+
+// Include necessary libraries
+#include <Trade\Trade.mqh>
+#include <DataFeed\DataFeed.mqh>
+#include <Performance\Performance.mqh>
+
+// Define constants
+#define CONSERVATIVE_RISK 0
+#define MODERATE_RISK 1
+#define AGGRESSIVE_RISK 2
+
+// Define global variables
+int riskType = MODERATE_RISK;
+
+// Define risk levels for back-tested performance
+double conservativeRiskLevel = 0.5;
+double moderateRiskLevel = 1.0;
+double aggressiveRiskLevel = 2.0;
+
+// Define function to calculate risk level based on back-tested performance
+int calculateRiskLevel(string currencyPair) {
+    double backTestedPerformance = calculateBackTestedPerformance(currencyPair);
+    
+    if (backTestedPerformance >= aggressiveRiskLevel) {
+        return AGGRESSIVE_RISK;
+    } else if (backTestedPerformance >= moderateRiskLevel) {
+        return MODERATE_RISK;
+    } else {
+        return CONSERVATIVE_RISK;
+    }
+}
+
+// Define function to execute buy order
+void executeBuyOrder(string currencyPair, double volume) {
+    double currentPrice = getCurrentPrice(currencyPair);
+    double stopLoss = calculateStopLoss(currencyPair, currentPrice);
+    double takeProfit = calculateTakeProfit(currencyPair, currentPrice);
+    
+    // Place buy order with specified volume, stop-loss, and take-profit
+    placeBuyOrder(currencyPair, volume, stopLoss, takeProfit);
+}
+
+// Define function to execute sell order
+void executeSellOrder(string currencyPair, double volume) {
+    double currentPrice = getCurrentPrice(currencyPair);
+    double stopLoss = calculateStopLoss(currencyPair, currentPrice);
+    double takeProfit = calculateTakeProfit(currencyPair, currentPrice);
+    
+    // Place sell order with specified volume, stop-loss, and take-profit
+    placeSellOrder(currencyPair, volume, stopLoss, takeProfit);
+}
+
+// Define function to set risk type preference
+void setRiskType(int type) {
+    riskType = type;
+}
+
+// Define function to optimize profit potential while minimizing potential losses
+void optimizeProfit() {
+    // Implement optimization logic here
+}
+
+// Define function to handle errors and exceptions
+void handleErrors() {
+    // Implement error handling logic here
+}
+
+// Define function to retrieve real-time market data
+void retrieveMarketData() {
+    // Implement real-time data feed logic here
+}
+
+// Define function to calculate and display performance metrics
+void calculatePerformanceMetrics() {
+    // Implement performance calculation and display logic here
+}
+
+// Define function to manage open positions
+void manageOpenPositions() {
+    // Implement open position management logic here
+}
+
+// Define function to create user-friendly interface
+void createUserInterface() {
+    // Implement user interface creation logic here
+}
+
+// Define function to test the code
+void testCode() {
+    // Implement code testing logic here
+}
+
+// Define function to optimize code performance
+void optimizeCodePerformance() {
+    // Implement code optimization logic here
+}
+
+// Define function to ensure code security
+void ensureCodeSecurity() {
+    // Implement code security logic here
+}
+
+// Define function to collaborate with product team
+void collaborateWithProductTeam() {
+    // Implement collaboration logic here
+}
+
+// Define function to provide ongoing support and maintenance
+void provideSupportAndMaintenance() {
+    // Implement support and maintenance logic here
+}
+
+// Define main function
+void OnStart()
+{
+    // Set risk type preference based on back-tested performance
+    string currencyPair = 'EURUSD';
+    int calculatedRiskLevel = calculateRiskLevel(currencyPair);
+    setRiskType(calculatedRiskLevel);
+    
+    // Execute buy and sell orders based on risk type preference
+    double volume = 0.1;
+    
+    if (riskType == CONSERVATIVE_RISK) {
+        executeBuyOrder(currencyPair, volume);
+    } else if (riskType == MODERATE_RISK) {
+        executeSellOrder(currencyPair, volume);
+    } else if (riskType == AGGRESSIVE_RISK) {
+        executeBuyOrder(currencyPair, volume);
+        executeSellOrder(currencyPair, volume);
+    }
+    
+    // Optimize profit potential while minimizing potential losses
+    optimizeProfit();
+    
+    // Handle errors and exceptions
+    handleErrors();
+    
+    // Retrieve real-time market data
+    retrieveMarketData();
+    
+    // Calculate and display performance metrics
+    calculatePerformanceMetrics();
+    
+    // Manage open positions
+    manageOpenPositions();
+    
+    // Create user-friendly interface
+    createUserInterface();
+    
+    // Test the code
+    testCode();
+    
+    // Optimize code performance
+    optimizeCodePerformance();
+    
+    // Ensure code security
+    ensureCodeSecurity();
+    
+    // Collaborate with product team
+    collaborateWithProductTeam();
+    
+    // Provide ongoing support and maintenance
+    provideSupportAndMaintenance();
+}
